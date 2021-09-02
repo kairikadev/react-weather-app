@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <div className="container">
    
-    <Weather />
+    <Weather defaultCity= "London" />
      <footer>
        Coded by Kairika Vakker,
        <a href="https://github.com/kairikadev/react-weather-app" target="_blank" rel="noreferrer">
