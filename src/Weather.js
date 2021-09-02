@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import "./Weather.css";
 import axios from "axios";
-import { loadPartialConfig } from "@babel/core";
+import FormattedDate from "./FormattedDate";
+
 
 export default function Weather(){
     const [weatherData, setWeatherData]= useState({ready:false});
@@ -10,8 +11,8 @@ export default function Weather(){
     function handleResponse(response){
         let weatherData={
             ready:true,
-            date: "Wednesday 10:00",
-            temperature:response.data.main.temp,
+            date: new Date(response.data.dt *1000),
+            temperature:Math.round(response.data.main.temp),
             description:response.data.weather[0].description,
             wind:response.data.wind.speed,
             humidity:response.data.main.humidity,
@@ -39,14 +40,16 @@ export default function Weather(){
                     </form>
                <h1>{weatherData.city}</h1>
                <ul>
-                   <li>{weatherData.date}</li>
+                   <li>
+                       <FormattedDate date={weatherData.date} />
+                   </li>
                    <li className="text-capitalize">{weatherData.description}</li>
                </ul>
                <div className="row">
                    <div className="col-6">
                        <img src={weatherData.icon} alt={weatherData.descpription}  />
                        <span className= "temperature">
-                           6
+                           {weatherData.temperature}
                        </span> 
                        <span className= "unit">°C |</span> 
                        <span className= "unit">°F</span>
