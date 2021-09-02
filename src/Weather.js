@@ -18,7 +18,7 @@ export default function Weather(){
             description:response.data.weather[0].description,
             wind:response.data.wind.speed,
             humidity:response.data.main.humidity,
-            icon:`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+            icon:response.data.weather[0].icon ,
             city: response.data.name
         }
         setWeatherData(weatherData);
@@ -29,7 +29,7 @@ export default function Weather(){
     function search(){
         const apiKey = "e1011e97bf969d1b569c2b62944075b5";
         
-        let apiUrl =`https:api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+        let apiUrl =`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     
         axios.get(apiUrl).then(handleResponse);
     
