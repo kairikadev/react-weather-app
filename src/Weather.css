@@ -21,13 +21,11 @@
     line-height: 20px;
     list-style: none;
 }
-.weather img {
+.weather canvas {
     display: inline-block;
     vertical-align: top;
-    height: 60px;
     margin-top: unset;
     margin-right: 10px;
-    width: 60px
 }
 .weather .temperature {
     color: #202124;
